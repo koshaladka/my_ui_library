@@ -3,12 +3,12 @@
 const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
-const sass = require("gulp-sass");
+const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require("autoprefixer");
 const cleanCSS = require("gulp-clean-css");
 const postcss = require("gulp-postcss");
 
-// const dist = "/Applications/MAMP/htdocs/test"; // Ссылка на вашу папку на локальном сервере
+// const dist = "/Applications/MAMP/htdocs/test"; // Ссылка на  папку на локальном сервере
 const dist = "./dist";
 
 gulp.task("copy-html", () => {
