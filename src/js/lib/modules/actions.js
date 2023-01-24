@@ -26,8 +26,44 @@ $.prototype.eq = function(i) { //найти элемент по номеру
  };
 
  $.prototype.index = function() { //узнать какой номер по порядку
-   
+   const parent = this[0].parentNode;
+   const childs = [...parent.children];
+
+   const findMyIndex = (item) => {
+    return item == this[0];
+   }
+
+   return childs.findIndex(findMyIndex);
  };
+
+ $.prototype.find = function(selector) { //узнать какой номер по порядку
+   let numberOfItems = 0;
+    let counter = 0;
+
+   const copyObj = Object.assign({}, this);
+
+   for (let i = 0; i < copyObj.length; i++) {
+    const arr = copyObj[i].querySelectorAll(selector);
+    if (arr.length == 0) {
+        continue;
+    }
+
+    for (let j = 0; j < arr.length; j++) {
+        this[counter] = arr[j];
+        counter++;
+    }
+    numberOfItems += arr.length;
+   }
+
+   this.length = numberOfItems;
+
+   const objLength = Object.keys(this).length;
+   for (; numberOfItems < objLength; numberOfItems++) {
+        delete this[numberOfItems];
+   }
+
+   return this;
+  };
 
 
  $.prototype.closest = function(selector) {
@@ -44,4 +80,35 @@ $.prototype.eq = function(i) { //найти элемент по номеру
     }
 
     return this;
- }
+ };
+
+
+ $.prototype.siblings = function() { //узнать какой номер по порядку
+    let numberOfItems = 0;
+     let counter = 0;
+ 
+    const copyObj = Object.assign({}, this);
+ 
+    for (let i = 0; i < copyObj.length; i++) {
+     const arr = copyObj[i].parentNode.children;
+     
+     for (let j = 0; j < arr.length; j++) {
+        if (copyObj[i] ===arr[j]) {
+            continue
+        }
+
+         this[counter] = arr[j];
+         counter++;
+     }
+     numberOfItems += arr.length -1;
+    }
+ 
+    this.length = numberOfItems;
+ 
+    const objLength = Object.keys(this).length;
+    for (; numberOfItems < objLength; numberOfItems++) {
+         delete this[numberOfItems];
+    }
+ 
+    return this;
+   };
