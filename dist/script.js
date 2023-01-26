@@ -416,7 +416,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* console.log($('.some').closest('.findme')); */
 
-(0,_lib_lib__WEBPACK_IMPORTED_MODULE_0__["default"])('.findme').fadeIn(1800);
+/* $('.findme').fadeIn(1800) */
 /* console.log($('button').html()); */
 })();
 

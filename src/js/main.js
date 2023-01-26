@@ -13,7 +13,7 @@ $('div').click(function(){
 
 /* console.log($('.some').closest('.findme')); */
 
-$('.findme').fadeIn(1800)
+/* $('.findme').fadeIn(1800) */
 /* console.log($('button').html()); */
 
 
